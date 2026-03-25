@@ -4,10 +4,10 @@
 @theme {
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Montserrat", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --color-primary: #6B7A65;
-  --color-secondary: #E8EAE3;
-  --color-primary-dark: #525E4D;
-  --color-secondary-light: #F7F8F5;
+  --color-primary: #7A4F2E;
+  --color-secondary: #FBDEC5;
+  --color-primary-dark: #5c3a21;
+  --color-secondary-light: #fcebe0;
 }
 
 body {
