@@ -9,7 +9,7 @@ export default function Hero({ onOpenModal }: { onOpenModal: () => void }) {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-secondary-light">
       <div className="absolute inset-0 z-0">
         <img
-          src="https://placehold.co/1920x1080/FBDEC5/7A4F2E?text=Hero+Background"
+          src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1920&q=80"
           alt="Beauty Clinic"
           className="w-full h-full object-cover opacity-20"
           referrerPolicy="no-referrer"

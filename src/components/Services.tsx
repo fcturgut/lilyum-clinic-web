@@ -12,28 +12,28 @@ export default function Services() {
       icon: <Scissors className="w-8 h-8 text-primary" />,
       title: t.services.hairHealth.title,
       items: t.services.hairHealth.items,
-      image: "https://placehold.co/800x600/FBDEC5/7A4F2E?text=Hair+Health"
+      image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 'skinRejuvenation',
       icon: <Sparkles className="w-8 h-8 text-primary" />,
       title: t.services.skinRejuvenation.title,
       items: t.services.skinRejuvenation.items,
-      image: "https://placehold.co/800x600/FBDEC5/7A4F2E?text=Skin+Rejuvenation"
+      image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 'injection',
       icon: <Syringe className="w-8 h-8 text-primary" />,
       title: t.services.injection.title,
       items: t.services.injection.items,
-      image: "https://placehold.co/800x600/FBDEC5/7A4F2E?text=Injection"
+      image: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 'energyBased',
       icon: <Zap className="w-8 h-8 text-primary" />,
       title: t.services.energyBased.title,
       items: t.services.energyBased.items,
-      image: "https://placehold.co/800x600/FBDEC5/7A4F2E?text=Energy+Based"
+      image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80"
     }
   ];
 

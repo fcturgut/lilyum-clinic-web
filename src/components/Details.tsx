@@ -10,25 +10,25 @@ export default function Details() {
       id: 'hairTransplant',
       title: t.details.hairTransplant.title,
       desc: t.details.hairTransplant.desc,
-      image: "https://placehold.co/800x600/FBDEC5/7A4F2E?text=Hair+Transplant"
+      image: "https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 'mesotherapy',
       title: t.details.mesotherapy.title,
       desc: t.details.mesotherapy.desc,
-      image: "https://placehold.co/800x600/FBDEC5/7A4F2E?text=Mesotherapy"
+      image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 'botox',
       title: t.details.botox.title,
       desc: t.details.botox.desc,
-      image: "https://placehold.co/800x600/FBDEC5/7A4F2E?text=Botox"
+      image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 'dermalFiller',
       title: t.details.dermalFiller.title,
       desc: t.details.dermalFiller.desc,
-      image: "https://placehold.co/800x600/FBDEC5/7A4F2E?text=Dermal+Filler"
+      image: "https://images.unsplash.com/photo-1611078505027-1d5f2e253392?auto=format&fit=crop&w=800&q=80"
     }
   ];
 

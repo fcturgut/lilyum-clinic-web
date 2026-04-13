@@ -10,37 +10,37 @@ export default function InstagramFeed() {
   const feed = [
     {
       id: 1,
-      image: "https://www.instagram.com/ltmclinic/p/DVqpr3JCtK9/",
+      image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
       likes: 124,
       comments: 12
     },
     {
       id: 2,
-      image: "https://placehold.co/400x400/FBDEC5/7A4F2E?text=Insta+2",
+      image: "https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=400&q=80",
       likes: 89,
       comments: 5
     },
     {
       id: 3,
-      image: "https://placehold.co/400x400/FBDEC5/7A4F2E?text=Insta+3",
+      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=400&q=80",
       likes: 256,
       comments: 34
     },
     {
       id: 4,
-      image: "https://placehold.co/400x400/FBDEC5/7A4F2E?text=Insta+4",
+      image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=400&q=80",
       likes: 145,
       comments: 8
     },
     {
       id: 5,
-      image: "https://placehold.co/400x400/FBDEC5/7A4F2E?text=Insta+5",
+      image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=400&q=80",
       likes: 312,
       comments: 45
     },
     {
       id: 6,
-      image: "https://placehold.co/400x400/FBDEC5/7A4F2E?text=Insta+6",
+      image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80",
       likes: 178,
       comments: 19
     }
