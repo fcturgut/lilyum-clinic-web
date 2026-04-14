@@ -14,6 +14,7 @@ import InstagramFeed from './components/InstagramFeed';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AppointmentModal from './components/AppointmentModal';
+import WhatsAppButton from './components/WhatsAppButton';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,6 +33,7 @@ export default function App() {
         </main>
         <Footer />
         <AppointmentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <WhatsAppButton />
       </div>
     </LanguageProvider>
   );

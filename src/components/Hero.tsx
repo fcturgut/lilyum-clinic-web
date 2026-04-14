@@ -24,10 +24,10 @@ export default function Hero({ onOpenModal }: { onOpenModal: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-primary/70 font-medium tracking-wider uppercase text-sm mb-4 block">
+            <span className="text-primary/80 font-semibold tracking-wider uppercase text-2xl md:text-3xl mb-4 block">
               {t.clinic.name}
             </span>
-            <h1 className="text-5xl md:text-7xl font-serif font-bold text-primary mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-primary mb-6 leading-tight">
               {t.hero.title}
             </h1>
             <p className="text-xl text-primary/80 mb-8 max-w-lg">

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MessageCircle, Calendar, Clock, User, Phone, Mail } from 'lucide-react';
+import { X, MessageCircle, Calendar, Clock, User, Phone, Mail, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import emailjs from '@emailjs/browser';
 
 interface AppointmentModalProps {
   isOpen: boolean;
@@ -10,6 +11,8 @@ interface AppointmentModalProps {
 
 export default function AppointmentModal({ isOpen, onClose }: AppointmentModalProps) {
   const { t } = useLanguage();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -39,14 +42,56 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
     window.open(`https://wa.me/905324366375?text=${text}`, '_blank');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Randevu Talebi: ${formData.name}`);
-    const body = encodeURIComponent(
-      `İsim: ${formData.name}\nTelefon: ${formData.phone}\nRandevu Tarihi: ${formData.date}\nSaat: ${formData.time}\nArama Tarihi: ${formData.callDate}\nArama Saati: ${formData.callTime}\nMesaj: ${formData.message}`
-    );
-    window.location.href = `mailto:${t.contact.email}?subject=${subject}&body=${body}`;
-    onClose();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // TODO: Replace these with your actual EmailJS credentials
+      // 1. Create an account at https://www.emailjs.com/
+      // 2. Add an Email Service (e.g., Gmail) to get your Service ID
+      // 3. Create an Email Template to get your Template ID
+      // 4. Get your Public Key from the Account -> API Keys section
+      
+      // Using your provided credentials
+      // Note: 'default_service' is the standard ID if you only connected one email account.
+      const serviceId = 'default_service'; 
+      const templateId = 'template_6z7xoi8';
+      const publicKey = '4_M_b889boW-y2v3C';
+
+      // We are formatting the data to match the variables in your EmailJS template
+      const templateParams = {
+        to_email: 'info@lilyumtipmerkezi.com.tr',
+        from_name: formData.name,
+        phone: formData.phone,
+        date: formData.date,
+        time: formData.time,
+        call_date: formData.callDate,
+        call_time: formData.callTime,
+        message: formData.message || 'No message provided'
+      };
+
+      // Send the email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      setSubmitStatus('success');
+      
+      // Reset form and close modal after 3 seconds
+      setTimeout(() => {
+        setFormData({
+          name: '', phone: '', date: '', time: '', callDate: '', callTime: '', message: ''
+        });
+        setSubmitStatus('idle');
+        onClose();
+      }, 3000);
+
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -216,12 +261,49 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                 ></textarea>
               </div>
 
-              <button
-                type="submit"
-                className="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-colors duration-300 shadow-lg"
-              >
-                {t.appointment.submit}
-              </button>
+              <div className="mt-6">
+                {submitStatus === 'success' && (
+                  <div className="mb-4 p-4 bg-green-50 text-green-700 rounded-xl flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                    <p className="text-sm font-medium">
+                      {t.language === 'en' 
+                        ? 'Your appointment request has been sent successfully! We will contact you soon.' 
+                        : 'Randevu talebiniz başarıyla gönderildi! Sizinle en kısa sürede iletişime geçeceğiz.'}
+                    </p>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="mb-4 p-4 bg-red-50 text-red-700 rounded-xl flex items-center gap-3">
+                    <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                    <p className="text-sm font-medium">
+                      {t.language === 'en'
+                        ? 'An error occurred while sending your request. Please try again or contact us via WhatsApp.'
+                        : 'Talebiniz gönderilirken bir hata oluştu. Lütfen tekrar deneyin veya WhatsApp üzerinden iletişime geçin.'}
+                    </p>
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting || submitStatus === 'success'}
+                  className="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-colors duration-300 shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      {t.language === 'en' ? 'Sending...' : 'Gönderiliyor...'}
+                    </>
+                  ) : submitStatus === 'success' ? (
+                    <>
+                      <CheckCircle2 className="w-5 h-5" />
+                      {t.language === 'en' ? 'Sent!' : 'Gönderildi!'}
+                    </>
+                  ) : (
+                    t.appointment.submit
+                  )}
+                </button>
+              </div>
             </form>
           </div>
         </motion.div>

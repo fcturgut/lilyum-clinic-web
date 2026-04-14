@@ -10,7 +10,7 @@ export default function InstagramFeed() {
   const feed = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
+      image: "/photos/example-photo.jpg", // <-- Upload your photo to the "public/photos" folder and change this name!
       likes: 124,
       comments: 12
     },
